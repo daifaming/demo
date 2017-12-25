@@ -30,7 +30,7 @@ public class ExcelService
 
     private static String fileName;
 
-    private static String sheet;
+    private static String sheetName;
 
     @Value("${excel.out.path}")
     public void setPath(String path)
@@ -45,9 +45,9 @@ public class ExcelService
     }
 
     @Value("${excel.out.sheet}")
-    public void setSheet(String sheet)
+    public void setSheetName(String sheetName)
     {
-        this.sheet = sheet;
+        this.sheetName = sheetName;
     }
 
     @Autowired
@@ -56,10 +56,10 @@ public class ExcelService
     public Map<String, List<Object>> getExcelMap()
     {
         Map<String, List<Object>> map = new HashMap<String, List<Object>>();
-        List<Object> listsA = this.getExcelList();
-        log.info("listA is: {}", listsA);
+        List<Object> lists = this.getExcelList();
+        log.info("listA is: {}", lists);
 
-        map.put(sheet, listsA);
+        map.put(sheetName, lists);
         return map;
     }
 

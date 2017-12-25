@@ -37,6 +37,6 @@ debug: true
 
 excel:
   out:
-    sheet: 用户信息
+    sheetName: 用户信息
     path: D:\\code\\excel
     fileName: 用户信息表
