@@ -69,15 +69,12 @@ public class ExcelUtil
      */
     private static void getRows(List<Object> datas, HSSFSheet sheet)
     {
-        int i = 0;
-        for (Object data : datas)
+        datas.forEach(data ->
         {
-
-            HSSFRow row = sheet.createRow(i);
+            HSSFRow row = sheet.createRow(datas.indexOf(data));
             //遍历创建每一行
             getCells(data, row);
-            i++;
-        }
+        });
     }
 
     /**
@@ -100,10 +97,6 @@ public class ExcelUtil
             {
                 // 如果不为空，设置可见性，然后返回
                 field.setAccessible(true);
-//
-//                String classType = field.getType().toString();
-//                int lastIndex = classType.lastIndexOf(".");
-//                classType = classType.substring(lastIndex + 1);
 
                 HSSFCell cell = row.createCell(lists.indexOf(field));
                 String value = "" + field.get(data);
@@ -133,6 +126,8 @@ public class ExcelUtil
 
             String targetPath = path + File.separator + fileName + time + ".xls";
             log.info("file path is {}", targetPath);
+
+            //TODO 依次判断创建目录和文件
 
             File file = new File(targetPath);
             if (!file.exists())
