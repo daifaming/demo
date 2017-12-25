@@ -119,14 +119,15 @@ public class ExcelUtil
     private static void write(HSSFWorkbook wb, String path, String fileName)
     {
 
+
+        String time = DateUtils.getLocalTimeStr(PatternConstant.yyyyMMddHHmmss);
+        log.info("current time is {}", time);
+
+        String targetPath = path + File.separator + fileName + time + ".xls";
+        log.info("file path is {}", targetPath);
+
         try
         {
-            String time = DateUtils.getLocalTimeStr(PatternConstant.yyyyMMddHHmmss);
-            log.info("current time is {}", time);
-
-            String targetPath = path + File.separator + fileName + time + ".xls";
-            log.info("file path is {}", targetPath);
-
             //TODO 依次判断创建目录和文件
 
             File file = new File(targetPath);
