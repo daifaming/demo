@@ -119,7 +119,6 @@ public class ExcelUtil
     private static void write(HSSFWorkbook wb, String path, String fileName)
     {
 
-
         String time = DateUtils.getLocalTimeStr(PatternConstant.yyyyMMddHHmmss);
         log.info("current time is {}", time);
 
