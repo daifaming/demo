@@ -1,0 +1,41 @@
+# datasource
+spring:
+  datasource:
+    primary:
+      url: jdbc:mysql://127.0.0.1:3306/testdb
+      username: daifaming
+      password: daifaming
+      driver-class-name: com.mysql.jdbc.Driver
+      tomcat:
+        max-idle: 10
+        max-wait: 10000
+        min-idle: 5
+        initial-size: 5
+    second:
+      url: jdbc:mysql://127.0.0.1:3306/testdb
+      username: daifaming
+      password: daifaming
+      driver-class-name: com.mysql.jdbc.Driver
+      tomcat:
+        max-idle: 10
+        max-wait: 10000
+        min-idle: 5
+        initial-size: 5
+  session:
+    store-type: none
+
+# tomcat
+server:
+  port: 8080
+  session:
+    timeout: 10
+  tomcat:
+    uri-encoding: UTF-8
+
+# debug
+debug: true
+
+excel:
+  out:
+    path: D:\\code\\excel
+    fileName: 用户信息表
