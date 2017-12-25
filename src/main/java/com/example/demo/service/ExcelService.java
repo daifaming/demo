@@ -53,7 +53,7 @@ public class ExcelService
     @Autowired
     private UserRepository userRepository;
 
-    public Map<String, List<Object>> getExcelMap()
+    private Map<String, List<Object>> getExcelMap()
     {
         Map<String, List<Object>> map = new HashMap<String, List<Object>>();
         List<Object> lists = this.getExcelList();
@@ -63,10 +63,9 @@ public class ExcelService
         return map;
     }
 
-    public List<Object> getExcelList()
+    private List<Object> getExcelList()
     {
-        List<Object> lists = userRepository.findAll();
-        return lists;
+        return userRepository.findAll();
     }
 
     public void generateExcel()
