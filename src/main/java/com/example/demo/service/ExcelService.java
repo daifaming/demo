@@ -30,6 +30,8 @@ public class ExcelService
 
     private static String fileName;
 
+    private static String sheet;
+
     @Value("${excel.out.path}")
     public void setPath(String path)
     {
@@ -42,6 +44,12 @@ public class ExcelService
         this.fileName = fileName;
     }
 
+    @Value("${excel.out.sheet}")
+    public void setSheet(String sheet)
+    {
+        this.sheet = sheet;
+    }
+
     @Autowired
     private UserRepository userRepository;
 
@@ -51,8 +59,7 @@ public class ExcelService
         List<Object> listsA = this.getExcelList();
         log.info("listA is: {}", listsA);
 
-        map.put("用户信息2", listsA);
-        map.put("用户信息1", listsA);
+        map.put(sheet, listsA);
         return map;
     }
 
@@ -62,9 +69,9 @@ public class ExcelService
         return lists;
     }
 
-    public  void generateExcel()
+    public void generateExcel()
     {
-        Map<String, List<Object>> map =this.getExcelMap();
+        Map<String, List<Object>> map = this.getExcelMap();
 
         ExcelUtil.generateExcel(map, path, fileName);
     }
