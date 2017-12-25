@@ -44,7 +44,7 @@ public class ExcelService
         this.fileName = fileName;
     }
 
-    @Value("${excel.out.sheet}")
+    @Value("${excel.out.sheetName}")
     public void setSheetName(String sheetName)
     {
         this.sheetName = sheetName;
