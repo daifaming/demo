@@ -81,7 +81,7 @@ public class ExcelUtil
      * @param data
      * @param row
      * @MethodName : getCells
-     * @Description : 遍历创建没一个cell
+     * @Description : 遍历创建每一个cell
      */
     private static void getCells(Object data, HSSFRow row)
     {
@@ -127,9 +127,10 @@ public class ExcelUtil
 
         try
         {
-            //TODO 依次判断创建目录和文件
 
+            mkDir(new File(path));
             File file = new File(targetPath);
+
             if (!file.exists())
             {
                 boolean is = file.createNewFile();
@@ -146,6 +147,15 @@ public class ExcelUtil
         {
             log.info("write excel into file error！");
             e.printStackTrace();
+        }
+    }
+
+    public static void mkDir(File file) {
+        if (file.getParentFile().exists()) {
+            file.mkdir();
+        } else {
+            mkDir(file.getParentFile());
+            file.mkdir();
         }
     }
 

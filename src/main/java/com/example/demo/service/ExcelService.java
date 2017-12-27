@@ -18,6 +18,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 /**
  * 数据重新编排
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
 @Configuration
 @PropertySource(value = "classpath:application-dev.yml", ignoreResourceNotFound = true)
